@@ -44,6 +44,8 @@ module Guard
     def run_go_command!
       if @options[:test]
         @proc = ChildProcess.build("go", "test")
+      elsif @options[:ginkgo]
+        @proc = ChildProcess.build("ginkgo")
       else
         @proc = ChildProcess.build("go", "run", @options[:server], @options[:args_to_s])
       end
